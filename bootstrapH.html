@@ -24,6 +24,12 @@
             background-color: #d44950;
             color: white;
         }
+
+        .dropdown-item:focus{
+            background-color: #d44950;
+            color: white;
+        }
+
     </style>
 </head>
 
@@ -98,12 +104,19 @@
             let dropdown = document.querySelectorAll(".dropdown-item")
             Array.from(dropdown).forEach((dropdown)=>{
                 dropdown.addEventListener('mouseover',(e) => {
+
+                    e.target.classList.add("bg-purple");
                     e.target.classList.remove("text-white");
                 })
 
                 dropdown.addEventListener('mouseout',(e) => {
+                    e.target.classList.remove("bg-purple");
                     e.target.classList.add("text-white");
                 })
+
+                // dropdown.addEventListener('click',(e) => {
+                //     e.target.style.backgroundColor = "#d44950"
+                // })
             })
         </script>
 </body>
