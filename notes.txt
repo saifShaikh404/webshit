@@ -1,0 +1,11 @@
+1). Mysql database
+
+2). email send php
+
+3). foreing key
+
+4). admin panel
+
+5). conditional data fetch
+
+6). search recommendation
