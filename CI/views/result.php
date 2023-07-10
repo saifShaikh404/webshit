@@ -11,6 +11,15 @@
         <?php foreach($namesList as $namelist){ ?>
             <div><?php echo $namelist["name"]; ?></div>
             <div><?php echo $namelist["another_name"]; ?></div>
+            <div>
+                <?php
+                 $urls = explode(" ", $namelist["url"]); 
+                //  echo print_r($urls);
+                foreach($urls as $url){
+                    echo "<button>" . $url . "</button>";
+                }
+                ?>
+            </div>
             <br>
         <?php } ?>
     </div>
