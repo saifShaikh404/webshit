@@ -8,7 +8,12 @@
 </head>
 <body>
     <div>
-        <?php foreach($namesList as $namelist){ ?>
+        <?php 
+            if($namesList === "" || $namesList === null){
+                echo "No data Found";
+            }
+            else{
+            foreach($namesList as $namelist){ ?>
             <div><?php echo $namelist["name"]; ?></div>
             <div><?php echo $namelist["another_name"]; ?></div>
             <div>
@@ -21,7 +26,7 @@
                 ?>
             </div>
             <br>
-        <?php } ?>
+        <?php }} ?>
     </div>
 </body>
 </html>

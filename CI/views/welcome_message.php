@@ -16,9 +16,8 @@
 		<?php foreach($dataTable as $datalist){ ?>
 			<div><?php echo $datalist['name']; ?></div>
 			<div><?php echo $datalist['another_name']; ?></div>
-		<?php }
-			
-		?>
+			<br>
+		<?php }	?>
 	</div>
 
 </body>
