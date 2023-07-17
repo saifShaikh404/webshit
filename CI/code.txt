@@ -1,0 +1,54 @@
+// Html
+<div id="data-container">
+    <!-- Data will be dynamically appended here -->
+</div>
+
+<button id="load-more-btn">Load More</button>
+
+// JS
+$(document).ready(function() {
+    var page = 1; // Track the current page
+    
+    // Handle "Load More" button click
+    $('#load-more-btn').click(function() {
+        page++; // Increment the page number
+        
+        // Send AJAX request to your PHP script
+        $.ajax({
+            url: 'your_php_script.php',
+            type: 'POST',
+            data: {page: page},
+            success: function(response) {
+                // Append the retrieved data to the container
+                $('#data-container').append(response);
+            },
+            error: function() {
+                console.log('Error occurred while loading more data.');
+            }
+        });
+    });
+});
+
+
+// PHP CI3
+// Assuming you have a function in your model to retrieve paginated data
+$page = $_POST['page'];
+$perPage = 10; // Number of items per page
+
+$start = ($page - 1) * $perPage;
+
+$results = $this->your_model->get_data($perPage, $start);
+
+// Generate HTML content for the retrieved data
+$html = '';
+foreach ($results as $row) {
+    // Generate HTML markup for each row of data
+    $html .= '<div class="data-row">';
+    $html .= '<p>' . $row['column1'] . '</p>';
+    $html .= '<p>' . $row['column2'] . '</p>';
+    // Add more markup as needed
+    $html .= '</div>';
+}
+
+// Send the generated HTML back to the JavaScript
+echo $html;
