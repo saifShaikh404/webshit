@@ -22,6 +22,7 @@ class Crud_model extends CI_model{
         $this->db->group_start();
         foreach ($keyVal as $value) {
             // All preposition , all helping verb
+            // $ignoredWords = array("and", "the", "is", "are", "was", "were", "in", "on", "at", "with", "for", "to", "from");
             if($value == "am" || $value == "is" || $value == "are" || $value == "on" || $value == "the" || $value == "in" || $value == "was"){
                 continue;
             }
