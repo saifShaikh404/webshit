@@ -20,8 +20,6 @@ class Home extends CI_Controller {
 		// $data["dataTable"] = $this->crud_model->get();
 		// $this->load->view("welcome_message", $data);
 
-
-			
 	}
 
 	
@@ -32,12 +30,12 @@ class Home extends CI_Controller {
 
 		$this->load->model("crud_model");
 		$data["namesList"] = $this->crud_model->search($searchArr);
-
+		// echo "data";
 		$this->load->view("result", $data);
 	}
 
-	public function homebar(){
-		
+	public function home_index($param = ""){
+
 	}
     
 }
