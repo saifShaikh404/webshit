@@ -10,53 +10,68 @@ class Crud_model extends CI_model{
     }
 
     public function get(){
-        return $this->db->get("datas")->result_array();
+        return $this->db->query("SELECT * FROM datas ORDER BY RAND();")->result_array();
+        // return $this->db->get("datas")->result_array();
     }
 
     public function search($keyVal){
-        // $this->db->like('name', $key);
-        // $query = $this->db->get('datas');
-        // return $query->result_array();
-
-
-        // $this->db->select('*');
-        // $this->db->from('datas');
-        // $this->db->like('LOWER(name)', strtolower($key));
-        // $query = $this->db->get();
-        // return $query->result_array();
-
-
-        // $this->db->select('*');
-        // $this->db->from('datas');
-        // // $this->db->like("LOWER(REPLACE(name, ' ', ''))",$keyVal);
-        // $this->db->where("REPLACE(name, ' ', '') LIKE", '%' . $keyVal . '%');
-        // $query = $this->db->get();
-        // return $query->result_array();
-
-
-        // $this->db->select('*');
-        // $this->db->from('datas');
-        // $this->db->where_in('LOWER(name)', $keyVal);
-        // $query = $this->db->get();
-        // return $query->result_array();
-
-
+        
+        $check = "";
         $this->db->select('*');
         $this->db->from('datas');
         $this->db->group_start();
         foreach ($keyVal as $value) {
-            $this->db->or_like('LOWER(name)', $value);
+            if($value == "am" || $value == "is" || $value == "are" || $value == "on" || $value == "the" || $value == "in" || $value == "was"){
+                continue;
+            }
+            else{
+                $this->db->or_like('LOWER(name)', $value);
+                $check = $check . $value;
+            }
         }
         $this->db->group_end();
-        $query = $this->db->get();
-        return $query->result_array();
 
+        if(empty($check)){
+            return "";
+        }
+        else{
+            $query = $this->db->get();
+            return $query->result_array(); 
+        }
 
-        // $this->db->select('*');
-        // $this->db->from('datas');
-        // $this->db->like('name', $key);
-        // $query = $this->db->get();
-        // return $query->result_array();
+    }
+
+    // public function search($keyVal){
+        
+    //     $this->db->select('*');
+    //     $this->db->from('datas');
+    //     $this->db->group_start();
+    //     foreach ($keyVal as $value) {
+    //         if($value == "am" || $value == "is" || $value == "are" || $value == "on" || $value == "the" || $value == "in" || $value == "was"){
+    //             continue;
+    //         }
+    //         else{
+    //             $this->db->or_like('LOWER(name)', $value);
+    //         }
+    //     }
+    //     $this->db->group_end();
+    //     $query = $this->db->get();
+    //     // print_r($this->db->get());
+
+    //     if($this->db->get()){
+    //         // $query = $this->db->get();
+    //         return $this->db->get()->result_array(); 
+    //     }
+    //     else{
+    //         print_r("Err");
+    //         return "";
+             
+    //     }
+
+    // }
+
+    public function getEnumVal($enumVal){
+
     }
 
 }
