@@ -26,16 +26,15 @@ class Home extends CI_Controller {
 
 	public function data($inputData){
 		$input = urldecode($inputData);
-		$searchArr = explode(" ", $input);
+		$searchArr = explode(" ", strtolower($input));
 
 		$this->load->model("crud_model");
 		$data["namesList"] = $this->crud_model->search($searchArr);
-		// echo "data";
 		$this->load->view("result", $data);
 	}
 
-	public function home_index($param = ""){
-
+	public function libs(){
+		
 	}
     
 }
