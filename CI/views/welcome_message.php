@@ -7,9 +7,15 @@
 	<title>Document</title>
 </head>
 <body>
-	<form action="<?php base_url() . "Home/index"; ?>" method="post">
+	<!-- <form action="<?php base_url() . "Home/index"; ?>" method="post">
 		<input type="text" name="searchBar" id="searchBar" placeholder="Search Here...">
 		<input type="submit" name="submit" id="submit" value="search">
+	</form> -->
+
+	<!-- Method 2 -->
+	<form action="<?php base_url() . "Home/index"; ?>" method="post">
+		<input type="text" name="second_search" id="second_search" placeholder="Search Data Here...">
+		<input type="submit" name="search" id="submit" value="search">
 	</form>
 
 	<div>
